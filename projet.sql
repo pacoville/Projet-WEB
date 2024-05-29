@@ -413,3 +413,24 @@ INSERT INTO `Disponibilite` (`dispo_id`, `coach_id`, `jour_semaine`, `debut_sean
 (322, 7, 'dimanche', '12:00:00', '13:00:00'),
 (323, 7, 'dimanche', '13:00:00', '14:00:00'),
 (324, 7, 'dimanche', '14:00:00', '15:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Paiement`
+--
+
+CREATE TABLE `Paiement` (
+  `paiement_id` int(11) NOT NULL,
+  `client_id` int(11) DEFAULT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `date_paiement` datetime DEFAULT NULL,
+  `statut_paiement` enum('en attente','effectuer','echouer') DEFAULT NULL,
+  `methode_paiement` enum('visa','mastercard','americanexpress','paypal') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Seance`
+--
