@@ -90,3 +90,17 @@ CREATE TABLE `Coach` (
 -- Déchargement des données de la table `Coach`
 --
 
+INSERT INTO `Coach` (`coach_id`, `utilisateur_id`, `specialite`, `photo`, `video`, `cv`) VALUES
+(1, 1, 'Natation', 'phillipe.jpeg', 'phillipe.mp4', NULL),
+(2, 3, 'Tennis', 'benoit.jpg', 'benoit.mp4', NULL),
+(3, 4, 'Basketball', 'michel.jpg', 'michel.mp4', NULL),
+(4, 5, 'Cycliste', 'david.jpg', 'david.mp4', NULL),
+(5, 6, 'Coach Sportif', 'john.jpg', 'john.mp4', NULL),
+(6, 7, 'Football', 'didier.jpg', 'didier.mp4', NULL),
+(7, 8, 'Rugby', 'christophe.jpg', 'christophe.mp4', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Detail_Paiement`
+--
