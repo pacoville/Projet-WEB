@@ -579,3 +579,9 @@ ALTER TABLE `Detail_Paiement`
 --
 -- AUTO_INCREMENT pour la table `Disponibilite`
 --
+ALTER TABLE `Disponibilite`
+  MODIFY `dispo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
+
+--
+-- AUTO_INCREMENT pour la table `Paiement`
+--
