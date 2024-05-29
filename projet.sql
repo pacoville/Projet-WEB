@@ -487,3 +487,11 @@ ALTER TABLE `Administrateur`
 --
 -- Index pour la table `Chat`
 --
+
+ALTER TABLE `Chat`
+  ADD PRIMARY KEY (`chat_id`),
+  ADD KEY `seance_id` (`seance_id`);
+
+--
+-- Index pour la table `Client`
+--
