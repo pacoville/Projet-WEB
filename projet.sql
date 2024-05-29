@@ -503,3 +503,10 @@ ALTER TABLE `Client`
 --
 -- Index pour la table `Coach`
 --
+ALTER TABLE `Coach`
+  ADD PRIMARY KEY (`coach_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
+
+--
+-- Index pour la table `Detail_Paiement`
+--
