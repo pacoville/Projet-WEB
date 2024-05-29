@@ -637,3 +637,15 @@ ALTER TABLE `Detail_Paiement`
 --
 -- Contraintes pour la table `Disponibilite`
 --
+ALTER TABLE `Disponibilite`
+  ADD CONSTRAINT `disponibilite_ibfk_1` FOREIGN KEY (`coach_id`) REFERENCES `Coach` (`coach_id`);
+
+--
+-- Contraintes pour la table `Paiement`
+--
+ALTER TABLE `Paiement`
+  ADD CONSTRAINT `paiement_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `Client` (`client_id`);
+
+--
+-- Contraintes pour la table `Seance`
+--
