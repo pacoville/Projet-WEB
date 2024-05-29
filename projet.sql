@@ -77,3 +77,16 @@ CREATE TABLE `Client` (
 -- Structure de la table `Coach`
 --
 
+CREATE TABLE `Coach` (
+  `coach_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `specialite` varchar(100) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `cv` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `Coach`
+--
+
