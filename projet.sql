@@ -462,3 +462,17 @@ CREATE TABLE `Utilisateur` (
 --
 -- Déchargement des données de la table `Utilisateur`
 --
+
+INSERT INTO `Utilisateur` (`utilisateur_id`, `prenom`, `nom`, `email`, `mdp_hash`, `role`) VALUES
+(1, 'Phillipe', 'LUCAS', 'phillipe.lucas@gmail.com', 'phillipelucas', 'coach'),
+(2, 'Pierre-Armel ', 'COVILLE', 'pierrearmel.coville@edu.ece.fr', 'pierrearmelcoville', 'admin'),
+(3, 'Benoit ', 'PAIRE', 'benoit.paire@gmail.com', 'benoitpaire', 'coach'),
+(4, 'Michel', 'JOURDAN', 'michel.jourdan@gmail.com', 'micheljourdan', 'coach'),
+(5, 'David', 'GAUDU', 'david.gaudu@gmail.com', 'davidgaudu', 'coach'),
+(6, 'John', 'TEXTOR', 'john.textor@gmail.com', 'jonhtextor', 'coach'),
+(7, 'Didier', 'Deschu', 'didier.deschu@gmail.com', 'didierdeschu', 'coach'),
+(8, 'Christophe', 'Urios', 'christophe.urios@gmail.com', 'christopheurios', 'coach');
+
+--
+-- Index pour les tables déchargées
+--
