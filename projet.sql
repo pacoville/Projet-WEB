@@ -58,3 +58,22 @@ CREATE TABLE `Chat` (
 --
 -- Structure de la table `Client`
 --
+
+CREATE TABLE `Client` (
+  `client_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `adresse_ligne1` varchar(255) DEFAULT NULL,
+  `adresse_ligne2` varchar(255) DEFAULT NULL,
+  `ville` varchar(50) DEFAULT NULL,
+  `code_postal` varchar(10) DEFAULT NULL,
+  `pays` varchar(50) DEFAULT NULL,
+  `numero` varchar(20) DEFAULT NULL,
+  `num_etudiant` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Coach`
+--
+
