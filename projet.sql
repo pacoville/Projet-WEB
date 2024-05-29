@@ -495,3 +495,11 @@ ALTER TABLE `Chat`
 --
 -- Index pour la table `Client`
 --
+
+ALTER TABLE `Client`
+  ADD PRIMARY KEY (`client_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
+
+--
+-- Index pour la table `Coach`
+--
