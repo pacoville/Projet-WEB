@@ -591,3 +591,9 @@ ALTER TABLE `Paiement`
 --
 -- AUTO_INCREMENT pour la table `Seance`
 --
+ALTER TABLE `Seance`
+  MODIFY `seance_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `Utilisateur`
+--
