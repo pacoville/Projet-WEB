@@ -585,3 +585,9 @@ ALTER TABLE `Disponibilite`
 --
 -- AUTO_INCREMENT pour la table `Paiement`
 --
+ALTER TABLE `Paiement`
+  MODIFY `paiement_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `Seance`
+--
