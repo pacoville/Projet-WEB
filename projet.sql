@@ -26,3 +26,12 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `Administrateur`
 --
+
+CREATE TABLE `Administrateur` (
+  `admin_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `Administrateur`
+--
