@@ -524,3 +524,18 @@ ALTER TABLE `Disponibilite`
 --
 -- Index pour la table `Paiement`
 --
+ALTER TABLE `Paiement`
+  ADD PRIMARY KEY (`paiement_id`),
+  ADD KEY `client_id` (`client_id`);
+
+--
+-- Index pour la table `Seance`
+--
+ALTER TABLE `Seance`
+  ADD PRIMARY KEY (`seance_id`),
+  ADD KEY `client_id` (`client_id`),
+  ADD KEY `coach_id` (`coach_id`);
+
+--
+-- Index pour la table `Utilisateur`
+--
