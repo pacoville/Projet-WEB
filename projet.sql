@@ -567,3 +567,9 @@ ALTER TABLE `Client`
 --
 -- AUTO_INCREMENT pour la table `Coach`
 --
+ALTER TABLE `Coach`
+  MODIFY `coach_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `Detail_Paiement`
+--
