@@ -517,3 +517,10 @@ ALTER TABLE `Detail_Paiement`
 --
 -- Index pour la table `Disponibilite`
 --
+ALTER TABLE `Disponibilite`
+  ADD PRIMARY KEY (`dispo_id`),
+  ADD KEY `coach_id` (`coach_id`);
+
+--
+-- Index pour la table `Paiement`
+--
