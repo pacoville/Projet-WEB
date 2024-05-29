@@ -573,3 +573,9 @@ ALTER TABLE `Coach`
 --
 -- AUTO_INCREMENT pour la table `Detail_Paiement`
 --
+ALTER TABLE `Detail_Paiement`
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `Disponibilite`
+--
