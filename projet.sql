@@ -555,3 +555,15 @@ ALTER TABLE `Administrateur`
 --
 -- AUTO_INCREMENT pour la table `Chat`
 --
+ALTER TABLE `Chat`
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `Client`
+--
+ALTER TABLE `Client`
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `Coach`
+--
