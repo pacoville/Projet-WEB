@@ -454,6 +454,9 @@ CREATE TABLE `Utilisateur` (
   `utilisateur_id` int(11) NOT NULL,
   `prenom` varchar(50) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
+  `adresse` varchar(255) DEFAULT NULL,
+  `code_postal` varchar(20) DEFAULT NULL,
+  `ville` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `mdp_hash` varchar(255) DEFAULT NULL,
   `role` enum('admin','coach','client') DEFAULT NULL
