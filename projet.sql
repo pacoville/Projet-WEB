@@ -449,3 +449,16 @@ CREATE TABLE `Seance` (
 --
 -- Structure de la table `Utilisateur`
 --
+
+CREATE TABLE `Utilisateur` (
+  `utilisateur_id` int(11) NOT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `mdp_hash` varchar(255) DEFAULT NULL,
+  `role` enum('admin','coach','client') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `Utilisateur`
+--
