@@ -539,3 +539,10 @@ ALTER TABLE `Seance`
 --
 -- Index pour la table `Utilisateur`
 --
+ALTER TABLE `Utilisateur`
+  ADD PRIMARY KEY (`utilisateur_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
