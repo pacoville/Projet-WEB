@@ -44,3 +44,17 @@ INSERT INTO `Administrateur` (`admin_id`, `utilisateur_id`) VALUES
 --
 -- Structure de la table `Chat`
 --
+
+CREATE TABLE `Chat` (
+  `chat_id` int(11) NOT NULL,
+  `seance_id` int(11) DEFAULT NULL,
+  `type_chat` enum('texte','audio','video') DEFAULT NULL,
+  `contenu_chat` text,
+  `temps_chat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Client`
+--
