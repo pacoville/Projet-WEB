@@ -104,3 +104,20 @@ INSERT INTO `Coach` (`coach_id`, `utilisateur_id`, `specialite`, `photo`, `video
 --
 -- Structure de la table `Detail_Paiement`
 --
+
+
+CREATE TABLE `Detail_Paiement` (
+  `detail_id` int(11) NOT NULL,
+  `paiement_id` int(11) DEFAULT NULL,
+  `type_carte` enum('visa','mastercard','americanexpress','paypal') DEFAULT NULL,
+  `num_carte` varchar(20) DEFAULT NULL,
+  `nom_carte` varchar(100) DEFAULT NULL,
+  `date_expiration` date DEFAULT NULL,
+  `cvc` varchar(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Disponibilite`
+--
