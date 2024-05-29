@@ -476,3 +476,14 @@ INSERT INTO `Utilisateur` (`utilisateur_id`, `prenom`, `nom`, `email`, `mdp_hash
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `Administrateur`
+--
+ALTER TABLE `Administrateur`
+  ADD PRIMARY KEY (`admin_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
+
+--
+-- Index pour la table `Chat`
+--
