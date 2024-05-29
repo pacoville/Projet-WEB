@@ -121,3 +121,16 @@ CREATE TABLE `Detail_Paiement` (
 --
 -- Structure de la table `Disponibilite`
 --
+
+
+CREATE TABLE `Disponibilite` (
+  `dispo_id` int(11) NOT NULL,
+  `coach_id` int(11) DEFAULT NULL,
+  `jour_semaine` enum('lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche') DEFAULT NULL,
+  `debut_seance` time DEFAULT NULL,
+  `fin_seance` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `Disponibilite`
+--
