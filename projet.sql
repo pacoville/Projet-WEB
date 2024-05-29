@@ -35,3 +35,12 @@ CREATE TABLE `Administrateur` (
 --
 -- Déchargement des données de la table `Administrateur`
 --
+
+INSERT INTO `Administrateur` (`admin_id`, `utilisateur_id`) VALUES
+(1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Chat`
+--
