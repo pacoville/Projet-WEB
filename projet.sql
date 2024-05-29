@@ -434,3 +434,18 @@ CREATE TABLE `Paiement` (
 --
 -- Structure de la table `Seance`
 --
+
+CREATE TABLE `Seance` (
+  `seance_id` int(11) NOT NULL,
+  `client_id` int(11) DEFAULT NULL,
+  `coach_id` int(11) DEFAULT NULL,
+  `temps_seance` datetime DEFAULT NULL,
+  `statut_seance` enum('reserve','realise','annule') DEFAULT NULL,
+  `note` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Utilisateur`
+--
