@@ -607,3 +607,21 @@ ALTER TABLE `Utilisateur`
 --
 -- Contraintes pour la table `Administrateur`
 --
+ALTER TABLE `Administrateur`
+  ADD CONSTRAINT `administrateur_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `Utilisateur` (`utilisateur_id`);
+
+--
+-- Contraintes pour la table `Chat`
+--
+ALTER TABLE `Chat`
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`seance_id`) REFERENCES `Seance` (`seance_id`);
+
+--
+-- Contraintes pour la table `Client`
+--
+ALTER TABLE `Client`
+  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `Utilisateur` (`utilisateur_id`);
+
+--
+-- Contraintes pour la table `Coach`
+--
