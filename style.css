@@ -28,6 +28,26 @@ body {
     text-align: center;
 }
 
+#section {
+    font-family: "Marker Felt", fantasy;
+    /*background-color: #7D7C7C;*/
+    background-color: #f4f4f4;
+    height: 1500px;
+}
+
+
+.content {
+    justify-content: space-between; /* Espace entre les éléments */
+    gap: 20px; /* Espacement entre les éléments */
+    text-align: center;
+}
+
+.text {
+    margin-left: 150px;
+    margin-top: 25px;
+    color: orange;
+    /*flex: 1; /* Le texte prendra autant d'espace que possible */*/
+}
 #footer p, #footer a {
     margin: 0;
     color: #FE7000;
