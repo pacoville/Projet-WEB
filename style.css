@@ -123,3 +123,37 @@ h2 {
 .carousel-container h2{
     color: orange;
 }
+
+#section p {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.5em;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Positionné juste en dessous de l'élément parent */
+    left: 50%; /* Positionné au milieu horizontalement */
+    transform: translateX(0%); /* Centré horizontalement */
+    background-color:  #333; /* Mise à jour de la couleur de fond */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+    
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block; /* Affiche le menu déroulant au survol */
+}
