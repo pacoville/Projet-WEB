@@ -1,0 +1,51 @@
+body {
+    margin: 5px; /* Marge de 5px autour de tout le contenu */
+}
+
+#header {
+    border: 2px solid black;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    position: relative; 
+    background : url("backgroundee.jpg");
+
+}
+
+#footer {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: relative; 
+    color: #FE7000;
+    font-size: 0.60em;  
+    font-style: italic; 
+    background: url("backgroundee.jpg");
+    height: 79px;
+}
+
+#footer table {
+    text-align: center;
+}
+
+#footer p, #footer a {
+    margin: 0;
+    color: #FE7000;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    text-decoration: underline; /* Optionnel : ajoute un soulignement au survol */
+}
+    
+.logo {
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.h1 {
+    display: flex;
+    align-items: center;
+    margin: 0 auto; /* Centre le h1 */
+    text-align: center;
+}
