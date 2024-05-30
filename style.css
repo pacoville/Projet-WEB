@@ -100,3 +100,26 @@ body {
 .nav-item a:hover {
     text-decoration: none; /* Optionnel : ajoute un soulignement au survol */
 }
+
+.carousel-inner {
+    align-items: center;
+    justify-content: center;
+    height: 700px; /* Ajustez cette valeur selon vos besoins */
+}
+
+.carousel-image {
+    margin-left: 10%;
+    width: 80%;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover; /* Cette propriété permet de s'assurer que l'image garde son ratio tout en remplissant le conteneur */
+}
+
+/* Centrer le texte des éléments h2 */
+h2 {
+    text-align: center;
+}   
+
+.carousel-container h2{
+    color: orange;
+}
