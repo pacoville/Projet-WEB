@@ -110,3 +110,59 @@
                     </button>
                 </div>
             </form>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "piscine";
+
+    // Création de la connexion
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Vérification de la connexion
+    if ($conn->connect_error) {
+        die("Connexion échouée: " . $conn->connect_error);
+    }
+
+    // Récupérer les données du formulaire
+    $prenom = $_POST['prenom'];
+    $nom = $_POST['nom'];
+    $adresse = $_POST['addresse'];
+    $code_postal = $_POST['code_postal'];
+    $ville = $_POST['ville'];
+    $numero = $_POST['numero'];
+    $email = $_POST['email'];
+    $mdp_hash = password_hash($_POST['mdp_hash'], PASSWORD_DEFAULT); // Hash du mot de passe
+    $role = 'client'; // Définir le rôle
+    // Récupérer les données du formulaire
+    $num_etudiant = $_POST['num_etudiant'];
+
+    // Préparer et exécuter la requête SQL pour ajouter l'utilisateur à la base de données
+    $sql = "INSERT INTO utilisateur (prenom, nom, adresse, code_postal, ville, numero, email, mdp_hash, role)
+            VALUES ('$prenom', '$nom', '$adresse', '$code_postal', '$ville', '$numero', '$email', '$mdp_hash', '$role')";
+
+    if ($conn->query($sql) === TRUE) {
+        // Récupérer l'ID de l'utilisateur inséré
+        $utilisateur_id = $conn->insert_id;
+
+        // Insérer l'utilisateur dans la table client
+        $sql_client = "INSERT INTO client (utilisateur_id, num_etudiant) VALUES ('$utilisateur_id', '$num_etudiant')";
+        if ($conn->query($sql_client) === TRUE) {
+            echo "<div class='alert alert-success'>Nouvel utilisateur ajouté avec succès</div>";
+        } else {
+            echo "<div class='alert alert-danger'>Erreur: " . $sql_client . "<br>" . $conn->error . "</div>";
+        }
+    } else {
+        echo "<div class='alert alert-danger'>Erreur: " . $sql . "<br>" . $conn->error . "</div>";
+    }
+
+    // Fermer la connexion
+    $conn->close();
+}
+?>
+
+        </div>
+    </div>
+</body>
+</html>
