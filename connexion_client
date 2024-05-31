@@ -1,0 +1,49 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Variables de connexion à la base de données
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "piscine";
+
+    // Connexion à la base de données
+    try {
+        $dbh = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // Configuration du mode d'erreur PDO pour afficher les erreurs
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die('Erreur de connexion à la base de données : ' . $e->getMessage());
+    }
+
+    // Récupération des données du formulaire
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Préparation et exécution de la requête SQL pour récupérer l'utilisateur
+    $requete = $dbh->prepare("SELECT * FROM utilisateur WHERE email = ?");
+    $requete->bindParam(1, $email, PDO::PARAM_STR);
+    $requete->execute();
+
+    // Récupération de l'utilisateur depuis la base de données
+    $user = $requete->fetch(PDO::FETCH_ASSOC);
+
+    // Vérification du mot de passe
+    if ($user && password_verify($password, $user['mdp_hash'])) {
+        // Enregistrement des informations de l'utilisateur dans la session
+        $_SESSION['utilisateur_id'] = $user['utilisateur_id'];
+        $_SESSION['user_nom'] = $user['nom'];
+        $_SESSION['user_prenom'] = $user['prenom'];
+        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_adresse'] = $user['adresse'];
+
+        // Redirection vers la page d'accueil
+        header("Location: compte-client.php");
+        exit(); // Assurez-vous de terminer le script après la redirection
+    } else {
+        // Identifiants incorrects
+        echo "Identifiants incorrects.";
+    }
+}
+?>
