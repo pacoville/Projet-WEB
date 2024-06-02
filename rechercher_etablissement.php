@@ -24,4 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $requete->bindParam(1, $search_etablissement, PDO::PARAM_STR);
     $requete->execute();
 
+    
+    // Récupération des résultats de la recherche
+    $etablissements = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+  
+
+    
+
+
 
