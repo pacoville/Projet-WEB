@@ -27,6 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Récupération des résultats de la recherche
     $etablissements = $requete->fetchAll(PDO::FETCH_ASSOC);
+      // Vérification s'il y a des résultats de recherche
+    if ($etablissements) {
+        // Affichage des résultats de la recherche
+        echo "<h2>Résultats de la recherche pour l'établissement '" . htmlspecialchars($search_etablissement) . "' :</h2>";
+        foreach ($etablissements as $etablissement) {
+            echo "<p>Nom : " . htmlspecialchars($etablissement['nom']) . "</p>";
+            echo "<p>Adresse : " . htmlspecialchars($etablissement['adresse']) . "</p>";
+            echo "<hr>";
+        }
+    
 
   
 
