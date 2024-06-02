@@ -171,6 +171,14 @@ $conn->close();
     </style>
 </head>
 <body>
+    <div id="header">
+        <h1>
+            <button class="button" data-text="Awesome">
+                <span class="actual-text">&nbsp;Administrateur&nbsp;</span>
+                <span aria-hidden="true" class="hover-text">&nbsp;Administrateur&nbsp;</span>
+            </button>
+        </h1>
+    </div>
     <div class="presentation">
         <h1>Bienvenue sur votre espace administrateur</h1>
         <p>Prénom: <?php echo htmlspecialchars($_SESSION['user_prenom']); ?></p>
@@ -240,6 +248,90 @@ $conn->close();
                 </div>
             </form>
         </div>
+    </div>
+    <div id="navigation">
+        <div class="logo">
+            <a href="compte-coach-connecte.php">
+                <img src="images/logo.jpg" alt="Sportify Logo" width="75" height="75">
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="accueil.php">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Accueil&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Accueil&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+        </div> 
+        <div class="nav-item">
+            <a href="index.html">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Parcourir&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Parcourir&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="index.html"> Les Activités sportives</a>
+                <a class="dropdown-item" href="index2.html"> Les Sports de compétition</a>
+                <a class="dropdown-item" href="index3.html">Salle de sport Omnes</a>
+            </div>
+        </div> 
+        <div class="nav-item">
+            <a href="rechercher.html">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Recherche&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Recherche&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+        </div> 
+        <div class="nav-item">
+            <a href="#">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Réservation&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Réservation&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+        </div> 
+        <div class="nav-item">
+            <a href="index.html">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Compte&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Compte&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="compte-client.php"> Compte client</a>
+                <a class="dropdown-item" href="compte-coach.php"> Compte coach</a>
+                <a class="dropdown-item" href="compte-admin.php"> Compte administrateur</a>
+
+            </div>
+        </div> 
+    </div>
+    <div id="footer">
+        <table>
+            <tr>
+                <td>
+                    <p>Copyright &copy; 2024 Sportify</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="mailto:sportify@gmail.com">sportify@gmail.com</a>
+                    <p>0139287600</p>
+                    <a href="https://www.google.fr/maps/place/15+Rue+de+Grenelle,+75007+Paris/@48.8531959,2.3259779,17z/data=!3m1!4b1!4m6!3m5!1s0x47e671d6973ba029:0xa5580f220b251923!8m2!3d48.8531924!4d2.3285528!16s%2Fg%2F11csmgr_yq?entry=ttu">15 Rue de Grenelle 75015 PARIS</p>
+                </td>
+            </tr>
+        </table> 
     </div>
 </body>
 </html>
