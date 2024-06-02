@@ -44,5 +44,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Aucun résultat trouvé pour les coachs
         echo "<h2>Aucun coach trouvé pour la recherche'" . htmlspecialchars($search_term) . "'</h2>";
     }
+    // Préparation et exécution de la requête SQL pour rechercher l'établissement par nom
+    $requete = $dbh->prepare("SELECT * FROM établissement WHERE nom = ?");
+    $requete->bindParam(1, $search_term, PDO::PARAM_STR);
+    $requete->execute();
+
+    // Récupération des résultats de la recherche pour les établissements
+    $etablissements = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+    // Vérification s'il y a des résultats de recherche pour les établissements
+    if ($etablissements) {
+        // Affichage des résultats de la recherche pour les établissements
+        echo "<h2>Résultats de la recherche pour l'établissement '" . htmlspecialchars($search_term) . "' :</h2>";
+        foreach ($etablissements as $etablissement) {
+            echo "<p>Nom : " . htmlspecialchars($etablissement['nom']) . "</p>";
+            echo "<p>Adresse : " . htmlspecialchars($etablissement['adresse']) . "</p>";
+            echo "<hr>";
+        }
+   
+
+   
+
 
     
