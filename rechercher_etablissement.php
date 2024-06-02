@@ -16,4 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (PDOException $e) {
         die('Erreur de connexion à la base de données : ' . $e->getMessage());
     }
+    
+    // Récupération du terme de recherche du formulaire
+    $search_etablissement = trim($_POST["search_etablissement"]);
+
+    
+
 
