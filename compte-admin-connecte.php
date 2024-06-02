@@ -53,3 +53,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['prenom'])) {
         echo "<div class='alert alert-danger'>Erreur: " . $sql . "<br>" . $conn->error . "</div>";
     }
 }
+
+// Fonction pour supprimer un utilisateur
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_email'])) {
+    // Récupérer les données du formulaire de suppression
+    $delete_email = $_POST['delete_email'];
+    $delete_numero = $_POST['delete_numero'];
+    $delete_mdp = $_POST['delete_mdp'];
+
+    // Vérifier l'utilisateur et son mot de passe
+    $sql = "SELECT utilisateur_id, mdp_hash FROM utilisateur WHERE email='$delete_email' AND numero='$delete_numero'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (password_verify($delete_mdp, $row['mdp_hash'])) {
+            $utilisateur_id = $row['utilisateur_id'];
+            // Supprimer l'utilisateur de la table des coachs
+            $delete_coach = "DELETE FROM coach WHERE utilisateur_id='$utilisateur_id'";
+            $conn->query($delete_coach);
+
+            // Supprimer l'utilisateur de la table utilisateur
+            $delete_user = "DELETE FROM utilisateur WHERE utilisateur_id='$utilisateur_id'";
+            if ($conn->query($delete_user) === TRUE) {
+                echo "<div class='alert alert-success'>Utilisateur supprimé avec succès</div>";
+            } else {
+                echo "<div class='alert alert-danger'>Erreur lors de la suppression de l'utilisateur: " . $conn->error . "</div>";
+            }
+        } else {
+            echo "<div class='alert alert-danger'>Mot de passe incorrect</div>";
+        }
+    } else {
+        echo "<div class='alert alert-danger'>Utilisateur non trouvé</div>";
+    }
+}
+
+// Fermer la connexion
+$conn->close();
+?>
