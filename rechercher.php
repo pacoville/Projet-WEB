@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Récupération du terme de recherche du formulaire
     $search_term = $_POST["search_term"] ?? '';
-     // Préparation et exécution de la requête SQL pour rechercher le coach par nom ou spécialité
+
+    // Préparation et exécution de la requête SQL pour rechercher le coach par nom ou spécialité
     $requete = $dbh->prepare("SELECT * FROM Coach 
                               INNER JOIN Utilisateur ON Coach.utilisateur_id = Utilisateur.utilisateur_id 
                               WHERE Utilisateur.prenom = ? OR Coach.specialite = ?");
@@ -35,7 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Affichage des résultats de la recherche pour les coachs
         echo "<h2>Résultats de la recherche pour '" . htmlspecialchars($search_term) . "' :</h2>";
         foreach ($coaches as $coach) {
-            echo "<p>Nom : " . htmlspecialchars($coach['nom']) . "</p>";
+            $specialite = strtolower($coach['specialite']);
+            $lien = '';
+            if (in_array($specialite, ['musculation', 'fitness', 'biking', 'cardio-training', 'cours collectif'])) {
+                $lien = 'index.html';
+            } else {
+                $lien = 'index2.html';
+            }
+            echo "<p><a href='$lien'>" . htmlspecialchars($coach['nom']) . "</a></p>";
             echo "<p>Prénom : " . htmlspecialchars($coach['prenom']) . "</p>";
             echo "<p>Spécialité : " . htmlspecialchars($coach['specialite']) . "</p>";
             echo "<hr>";
@@ -44,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Aucun résultat trouvé pour les coachs
         echo "<h2>Aucun coach trouvé pour la recherche'" . htmlspecialchars($search_term) . "'</h2>";
     }
+
     // Préparation et exécution de la requête SQL pour rechercher l'établissement par nom
     $requete = $dbh->prepare("SELECT * FROM établissement WHERE nom = ?");
     $requete->bindParam(1, $search_term, PDO::PARAM_STR);
@@ -57,20 +66,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Affichage des résultats de la recherche pour les établissements
         echo "<h2>Résultats de la recherche pour l'établissement '" . htmlspecialchars($search_term) . "' :</h2>";
         foreach ($etablissements as $etablissement) {
-            echo "<p>Nom : " . htmlspecialchars($etablissement['nom']) . "</p>";
+            echo "<p><a href='salle_de_sport.php?salle=" . htmlspecialchars($etablissement['nom']) . "'>" . htmlspecialchars($etablissement['nom']) . "</a></p>";
             echo "<p>Adresse : " . htmlspecialchars($etablissement['adresse']) . "</p>";
             echo "<hr>";
         }
-         } else {
+    } else {
         // Aucun résultat trouvé pour les établissements
         echo "<h2>Aucun résultat trouvé pour l'établissement '" . htmlspecialchars($search_term) . "'</h2>";
     }
 }
 ?>
-
-   
-
-   
-
-
-    
