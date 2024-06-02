@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activités Sportives</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="logo.jpg" rel="icon" type="image/x-icon" />
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Bibliothèque jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Dernier JavaScript compilé -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #333;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .carousel {
+            max-width: 800px;
+            height: 450px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 0;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel img.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(0%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-indicators span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-indicators span.active {
+            background-color: white;
+        }
+
+        #navigation {
+            border: 2px solid black;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            height: 100px;
+        }
+
+        .nav-item {
+            position: relative; /* Ajouté pour permettre le positionnement absolu du menu déroulant */
+            border: 1.5px solid black;
+            background-color: black;
+            padding: 10px;
+            margin: auto;
+            color: #FE7000;
+            text-align: center;
+            border-radius: 10px;
+            height: 75px;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: -185%; /* Positionné juste en dessous de l'élément parent */
+            left: -1%; /* Positionné au milieu horizontalement */
+            transform: translateX(0%); /* Centré horizontalement */
+            background-color: #333; /* Mise à jour de la couleur de fond */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-item {
+            padding: 10px 10px;
+            border-bottom: 1px solid #ddd;
+            display: block;
+            text-decoration: none;
+            color: black;
+        }
+            
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block; /* Affiche le menu déroulant au survol */
+        }
+
+        .button {
+          margin: 0;
+          height: auto;
+          background: transparent;
+          padding: 0;
+          border: none;
+          cursor: pointer;
+        }
+
+        /* button styling */
+        .button {
+          --border-right: 6px;
+          --text-stroke-color: rgba(0,0,0,0.6);
+          --animation-color: #FE7000;
+          --fs-size: 1em;
+          letter-spacing: 3px;
+          text-decoration: none;
+          font-size: var(--fs-size);
+          font-family: "Arial";
+          position: relative;
+          text-transform: uppercase;
+          color: #f4f4f4;
+          -webkit-text-stroke: 1px var(--text-stroke-color);
+        }
+        /* this is the text, when you hover on button */
+        .hover-text {
+          position: absolute;
+          box-sizing: border-box;
+          content: attr(data-text);
+          color: var(--animation-color);
+          width: 0%;
+          inset: 0;
+          border-right: var(--border-right) solid var(--animation-color);
+          overflow: hidden;
+          transition: 0.5s;
+          -webkit-text-stroke: 1px var(--animation-color);
+        }
+        /* hover */
+        .button:hover .hover-text {
+          width: 100%;
+          filter: drop-shadow(0 0 23px var(--animation-color))
+        }
+
+        #header button {
+          --border-right: 6px;
+          --text-stroke-color: rgba(0,0,0,0.6);
+          --animation-color: #FE7000;
+          --fs-size: 2em;
+          letter-spacing: 1px;
+          text-decoration: none;
+          font-size: var(--fs-size);
+          font-family: "Arial";
+          position: relative;
+          text-transform: uppercase;
+          color: #f4f4f4;
+          -webkit-text-stroke: 1px var(--text-stroke-color);
+        } 
+    </style>
+</head>
+<body>
+    <div id ="header">
+        <h1>
+            <button class="button" data-text="Awesome">
+                <span class="actual-text">&nbsp;Sports&nbsp;</span>
+                <span aria-hidden="true" class="hover-text">&nbsp;Sports&nbsp;</span>  
+            </button>
+        </h1>
+    </div>
+    <br><br>
+    <nav>
+        <ul>
+            <li><a href="activite.php">Musculation</a></li>
+            <li><a href="activite2.php">Fitness</a></li>
+            <li><a href="activite3.php">Biking</a></li>
+            <li><a href="activite4.php">Cardio-Training</a></li>
+            <li><a href="activite5.php">Cours Collectifs</a></li>
+        </ul>
+    </nav>
+    <div class="carousel">
+        <img src="Activité_Musculation.jpg" alt="Musculation" class="active">
+        <img src="Activité_Fitness.jpg" alt="Fitness">
+        <img src="Activité_Biking.jpg" alt="Biking">
+        <img src="Activité_Cardio-training.jpg" alt="Cardio-Training">
+        <img src="Activité_Cours-collectifs.jpg" alt="Cours Collectifs">
+        <div class="carousel-controls">
+            <button onclick="prevSlide()">&#10094;</button>
+            <button onclick="nextSlide()">&#10095;</button>
+        </div>
+        <div class="carousel-indicators">
+            <span onclick="goToSlide(0)" class="active"></span>
+            <span onclick="goToSlide(1)"></span>
+            <span onclick="goToSlide(2)"></span>
+            <span onclick="goToSlide(3)"></span>
+            <span onclick="goToSlide(4)"></span>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+        const indicators = document.querySelectorAll('.carousel-indicators span');
+
+        function showSlide(index) {
+            images[currentIndex].classList.remove('active');
+            indicators[currentIndex].classList.remove('active');
+            currentIndex = (index + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+            indicators[currentIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        // Auto slide
+        setInterval(nextSlide, 3000); // Change image every 3 seconds
+    </script>
+    <div id="navigation">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.jpg" alt="Sportify Logo" width="75" height="75">
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="accueil.php">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Accueil&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Accueil&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+        </div> 
+        <div class="nav-item">
+            <a href="index.html">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Parcourir&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Parcourir&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="index.html"> Les Activités sportives</a>
+                <a class="dropdown-item" href="index2.html"> Les Sports de compétition</a>
+                <a class="dropdown-item" href="salle_de_sport.php">Salle de sport Omnes</a>
+            </div>
+        </div> 
+        <div class="nav-item">
+            <a href="rechercher.html">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Recherche&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Recherche&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+        </div> 
+        <div class="nav-item">
+            <a href="#">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Réservation&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Réservation&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+        </div> 
+        <div class="nav-item">
+            <a href="index.html">
+                <h3>
+                    <button class="button" data-text="Awesome">
+                        <span class="actual-text">&nbsp;Compte&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Compte&nbsp;</span>  
+                    </button>
+                </h3>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="compte-client.php"> Compte client</a>
+                <a class="dropdown-item" href="compte-coach.php"> Compte coach</a>
+                <a class="dropdown-item" href="compte-admin.php"> Compte administrateur</a>
+
+            </div>
+        </div> 
+    </div>
+    <div id="footer">
+        <table>
+            <tr>
+                <td>
+                    <p>Copyright &copy; 2024 Sportify</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="mailto:sportify@gmail.com">sportify@gmail.com</a>
+                    <p>0139287600</p>
+                    <a href="https://www.google.fr/maps/place/15+Rue+de+Grenelle,+75007+Paris/@48.8531959,2.3259779,17z/data=!3m1!4b1!4m6!3m5!1s0x47e671d6973ba029:0xa5580f220b251923!8m2!3d48.8531924!4d2.3285528!16s%2Fg%2F11csmgr_yq?entry=ttu">15 Rue de Grenelle 75015 PARIS</p>
+                </td>
+            </tr>
+        </table> 
+    </div>
+</body>
+</html>
