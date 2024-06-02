@@ -3,59 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'Accueil - Salle de Sport</title>
-    <link rel="stylesheet" href="index3.css">
+    <title>Liste des Salles de Sport</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .etablissement {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .etablissement h3 {
+            margin: 0;
+            color: #333;
+        }
+        .etablissement p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .etablissement .services-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .etablissement .services-button:hover {
+            background-color: #0056b3;
+        }
+        .etablissement img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenue à la Salle de Sport</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#services">Services Disponibles</a></li>
-            <li><a href="#contacts">Coordonnées</a></li>
-        </ul>
-    </nav>
-    <section id="services">
-        <h2>Services Disponibles</h2>
-        <div class="service">
-            <h3>Règles sur l'utilisation des machines</h3>
-            <p>Découvrez les règles essentielles à respecter lors de l'utilisation des machines dans notre salle de sport.</p>
-            <a href="reglement.html" class="btn">En savoir plus</a>
-        </div>
-        <div class="service">
-            <h3>Horaire de la gym</h3>
-            <p>Consultez nos horaires d'ouverture et planifiez votre séance d'entraînement.</p>
-            <a href="horaires_gym.html" class="btn">Consulter</a>
-        </div>
-        <div class="service">
-            <h3>Questionnaires pour nouveaux utilisateurs</h3>
-            <p>Accédez aux questionnaires pour les nouveaux utilisateurs de notre salle de sport.</p>
-            <a href="questionnaires.html" class="btn">Répondre</a>
-        </div>
-        <!-- Ajoutez d'autres services disponibles selon vos besoins -->
-    </section>
-     <section id="contacts">
-        <h2>Coordonnées</h2>
-        <div class="contact-info">
-            <h3>Responsable des Entraînements</h3>
-            <p>Nom: John Doe</p>
-            <p>Téléphone: 123-456-7890</p>
-            <p>Email: john.doe@salledesport.com</p>
-        </div>
-        <div class="contact-info">
-            <h3>Responsable Administratif</h3>
-            <p>Nom: Jane Smith</p>
-            <p>Téléphone: 987-654-3210</p>
-            <p>Email: jane.smith@salledesport.com</p>
-        </div>
-        <!-- Ajoutez d'autres coordonnées de responsables selon vos besoins -->
-    </section>
-    <footer>
-        <p>&copy; 2024 Salle de Sport. Tous droits réservés.</p>
-    </footer>
+    <h1>Liste des Salles de Sport</h1>
+    <?php
+    // Informations de connexion à la base de données
+    $servername = "localhost"; // Remplacez par votre serveur de base de données
+    $username = "root"; // Remplacez par votre nom d'utilisateur de base de données
+    $password = ""; // Remplacez par votre mot de passe de base de données
+    $dbname = "piscine"; // Remplacez par le nom de votre base de données
+
+    // Création de la connexion
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Vérification de la connexion
+    if ($conn->connect_error) {
+        die("Échec de la connexion: " . $conn->connect_error);
+    }
+
+    // Préparation de la requête SQL pour récupérer les informations des salles de sport
+    $sql = "SELECT nom, adresse, ville, email, numéros, image FROM établissement";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Affichage des informations de chaque salle de sport
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='etablissement'>";
+            echo "<div>";
+            echo "<h3>" . $row["nom"] . "</h3>";
+            echo "<p><strong>Adresse:</strong> " . $row["adresse"] . "</p>";
+            echo "<p><strong>Ville:</strong> " . $row["ville"] . "</p>";
+            echo "<p><strong>Email:</strong> " . $row["email"] . "</p>";
+            echo "<p><strong>Téléphone:</strong> " . $row["numéros"] . "</p>";
+            echo "<a href='index3.php?salle=" . $row["nom"] . "' class='services-button'>Nos services</a>";
+            echo "</div>";
+            if (!empty($row["image"])) {
+                echo "<img src='" . $row["image"] . "' alt='Image de " . $row["nom"] . "'>";
+            }
+            echo "</div>";
+        }
+    } else {
+        echo "<p>Aucun établissement trouvé.</p>";
+    }
+
+    // Fermeture de la connexion
+    $conn->close();
+    ?>
 </body>
 </html>
-   
-    
-    
