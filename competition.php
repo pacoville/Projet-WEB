@@ -64,3 +64,61 @@
         echo "<button id='show-cv' class='action-button'>Voir son CV</button>";
         echo "</div>";
         echo "</div>";
+        // Affichage conditionnel du CV
+        echo "<div id='cv-content' class='cv-content'>";
+        if (file_exists($cv)) {
+            $xml = simplexml_load_file($cv);
+            echo "<h3>Curriculum Vitae</h3>";
+
+            // Afficher les informations du CV
+            echo "<p><strong>Prénom:</strong> " . $xml->prenom . "</p>";
+            echo "<p><strong>Nom:</strong> " . $xml->nom . "</p>";
+            echo "<p><strong>Email:</strong> " . $xml->email . "</p>";
+            echo "<p><strong>Téléphone:</strong> " . $xml->telephone . "</p>";
+
+            // Expérience
+            echo "<h4>Expérience</h4>";
+            foreach ($xml->experience->poste as $poste) {
+                echo "<p><strong>Poste:</strong> " . $poste->titre . "</p>";
+                echo "<p><strong>Club:</strong> " . $poste->club . "</p>";
+                echo "<p><strong>Durée:</strong> " . $poste->duree . "</p>";
+                echo "<hr>";
+            }
+
+            // Compétences
+            echo "<h4>Compétences</h4>";
+            foreach ($xml->competences->competence as $competence) {
+                echo "<p>" . $competence . "</p>";
+            }
+
+            // Formation
+            echo "<h4>Formation</h4>";
+            echo "<p><strong>Diplôme:</strong> " . $xml->formation->diplome . "</p>";
+            echo "<p><strong>Établissement:</strong> " . $xml->formation->etablissement . "</p>";
+            echo "<p><strong>Année:</strong> " . $xml->formation->annee . "</p>";
+
+            echo "</div>";
+        } else {
+            echo "<p>Le fichier CV n'a pas pu être trouvé.</p>";
+        }
+        echo "</div>";
+    } else {
+        echo "Aucun coach trouvé pour cette spécialité.";
+    }
+    $stmt->close();
+
+    // Fermeture de la connexion
+    $conn->close();
+    ?>
+    <script>
+        document.getElementById('show-cv').addEventListener('click', function() {
+            var cvContent = document.getElementById('cv-content');
+            if (cvContent.style.display === 'none' || cvContent.style.display === '') {
+                cvContent.style.display = 'block';
+            } else {
+                cvContent.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
