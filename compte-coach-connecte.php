@@ -155,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="navigation">
         <div class="logo">
             <a href="compte-coach-connecte.php">
-                <img src="images/logo.jpg" alt="Sportify Logo" width="75" height="75">
+                <img src="logo.jpg" alt="Sportify Logo" width="75" height="75">
             </a>
         </div>
         <div class="nav-item">
@@ -204,7 +204,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </a>
         </div> 
         <div class="nav-item">
-            <a href="index.html">
+            <a href="compte-coach-connecte.php">
                 <h3>
                     <button class="button" data-text="Awesome">
                         <span class="actual-text">&nbsp;Compte&nbsp;</span>
