@@ -87,3 +87,21 @@ if (!isset($_SESSION['utilisateur_id'])) {
         }
     </style>
 </head>
+<body>
+    <div id ="header">
+        <h1>
+            <button class="button" data-text="Awesome">
+                <span class="actual-text">&nbsp;Client&nbsp;</span>
+                <span aria-hidden="true" class="hover-text">&nbsp;Client&nbsp;</span>  
+            </button>
+        </h1>
+    </div> 
+    <div class="presentation">
+        <h1>Bienvenue sur votre espace client</h1>
+        <p>Prénom: <?php echo htmlspecialchars($_SESSION['user_prenom']); ?></p>
+        <p>Nom: <?php echo htmlspecialchars($_SESSION['user_nom']); ?></p>
+        <p>Email: <?php echo htmlspecialchars($_SESSION['user_email']); ?></p>
+        <p>Adresse: <?php echo htmlspecialchars($_SESSION['user_adresse']); ?></p>
+    </div>
+</body>
+</html>
