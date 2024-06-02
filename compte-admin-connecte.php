@@ -91,3 +91,138 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_email'])) {
 // Fermer la connexion
 $conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="images/logo.jpg" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Bibliothèque jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Dernier JavaScript compilé -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Compte admin</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .nav-item {
+            position: relative;
+            border: 1.5px solid black;
+            background-color: black;
+            padding: 10px;
+            margin: auto;
+            color: #FE7000;
+            text-align: center;
+            border-radius: 10px;
+            height: 75px;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: -175%;
+            left: -1%;
+            transform: translateX(0%);
+            background-color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .card {
+            height: auto;
+        }
+        
+        #navigation {
+            position: absolute;
+            bottom: -422px;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #footer {
+            position: absolute;
+            bottom: -500px;
+            width: 100%;
+            background-color: black;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .presentation {
+            border: 2px solid black;
+            margin-top: 15px;
+            width: 95%;
+            margin-left: 2.5%;
+        }
+
+        .presentation h1 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        .presentation p {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <h1>Bienvenue sur votre espace administrateur</h1>
+        <p>Prénom: <?php echo htmlspecialchars($_SESSION['user_prenom']); ?></p>
+        <p>Nom: <?php echo htmlspecialchars($_SESSION['user_nom']); ?></p>
+        <p>Email: <?php echo htmlspecialchars($_SESSION['user_email']); ?></p>
+        <p>Adresse: <?php echo htmlspecialchars($_SESSION['user_adresse']); ?></p>
+    </div>
+    <div class="form-container">
+        <div class="card">
+            <h4 class="title">Créer un compte</h4>
+            <form method="POST">
+                <div class="field">
+                    <input autocomplete="off" id="prenom" placeholder="prenom" class="input-field" name="prenom" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="nom" placeholder="nom" class="input-field" name="nom" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="addresse" placeholder="addresse" class="input-field" name="addresse" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="code_postal" placeholder="code_postal" class="input-field" name="code_postal" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="ville" placeholder="ville" class="input-field" name="ville" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="numero" placeholder="numero" class="input-field" name="numero" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="specialite" placeholder="specialite" class="input-field" name="specialite" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="photo" placeholder="photo" class="input-field" name="photo" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="video" placeholder="video" class="input-field" name="video" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="cv" placeholder="cv" class="input-field" name="cv" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="email" placeholder="email" class="input-field" name="email" type="email">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="mdp_hash" placeholder="mot de passe" class="input-field" name="mdp_hash" type="password">
+                </div>
+                <div class="field">
+                    <button class="btn" type="submit">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
