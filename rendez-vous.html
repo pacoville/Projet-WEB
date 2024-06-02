@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservation de rendez-vous</title>
+  <style>
+    table {
+      width: 50%;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .disponible {
+      background-color: #d4edda;
+      cursor: pointer;
+    }
+    .pas-disponible {
+      background-color: #f8d7da;
+    }
+  </style>
+  <script>
+    function reserver(cell) {
+      if (cell.classList.contains('disponible')) {
+        cell.textContent = 'Pas disponible';
+        cell.classList.remove('disponible');
+        cell.classList.add('pas-disponible');
+      }
+    }
+  </script>
+</head>
+<body>
+<h2 style="text-align: center;">Réservation de rendez-vous</h2>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>Matin</th>
+    <th>Après-midi</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th>Lundi</th>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+  </tr>
+  <tr>
+    <th>Mardi</th>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+  </tr>
+  <tr>
+    <th>Mercredi</th>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+  </tr>
+  <tr>
+    <th>Jeudi</th>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+  </tr>
+  <tr>
+    <th>Vendredi</th>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+    <td class="disponible" onclick="reserver(this)">Disponible</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
