@@ -223,6 +223,23 @@ $conn->close();
                 </div>
             </form>
         </div>
+        <div class="card">
+            <h4 class="title">Supprimer un compte</h4>
+            <form method="POST">
+                <div class="field">
+                    <input autocomplete="off" id="delete_email" placeholder="Email" class="input-field" name="delete_email" type="email">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="delete_numero" placeholder="Numéro" class="input-field" name="delete_numero" type="text">
+                </div>
+                <div class="field">
+                    <input autocomplete="off" id="delete_mdp" placeholder="Mot de passe" class="input-field" name="delete_mdp" type="password">
+                </div>
+                <div class="field">
+                    <button class="btn" type="submit">Valider</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
