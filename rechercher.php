@@ -61,6 +61,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p>Adresse : " . htmlspecialchars($etablissement['adresse']) . "</p>";
             echo "<hr>";
         }
+         } else {
+        // Aucun résultat trouvé pour les établissements
+        echo "<h2>Aucun résultat trouvé pour l'établissement '" . htmlspecialchars($search_term) . "'</h2>";
+    }
+}
+?>
+
    
 
    
