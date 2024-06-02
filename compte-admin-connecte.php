@@ -92,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_email'])) {
 $conn->close();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
